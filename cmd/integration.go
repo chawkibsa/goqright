@@ -87,7 +87,6 @@ func promptGetInput(pc promptContent) string {
 		os.Exit(1)
 	}
 
-	//fmt.Printf("Input: %s\n", result)
 	return result
 
 }
@@ -102,7 +101,6 @@ func promptGetSelect(pc promptContent) string {
 		prompt := promptui.Select{
 			Label: pc.label,
 			Items: items,
-			//AddLabel: "Add new",
 		}
 
 		index, result, err = prompt.Run()
@@ -117,7 +115,6 @@ func promptGetSelect(pc promptContent) string {
 		os.Exit(1)
 	}
 
-	//fmt.Printf("Input: %s\n", result)
 	return result
 }
 
@@ -165,7 +162,6 @@ func removeIntegration() {
 
 func showIntegration() {
 	// show all saved integrations
-	// selects everything from integrations table
 	integrations := data.GetIntegrations()
 
 	data.PrintIntegrations(integrations)
