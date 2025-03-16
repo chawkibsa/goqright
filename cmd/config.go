@@ -6,7 +6,6 @@ package cmd
 import (
 	//	"fmt"
 
-	"github.com/chawkibsa/goqright/data"
 	"github.com/spf13/cobra"
 )
 
@@ -17,10 +16,10 @@ var configCmd = &cobra.Command{
 	Long: `Configures goqright backend integrations and other related services
 
 It must be used along with other subcommands (e.g.,integration ) and flags (e.g., --add, --remove, --show, --list).`,
-	Run: func(cmd *cobra.Command, args []string) {
-		//fmt.Println("config called")
-		data.CreateIntegrationsTable()
-	},
+	//Run: func(cmd *cobra.Command, args []string) {
+	//fmt.Println("config called")
+
+	//},
 }
 
 func init() {
