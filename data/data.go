@@ -24,7 +24,7 @@ func CreateIntegrationsTable() {
   createIntegrationsTableSQL := `CREATE TABLE IF NOT EXISTS integrations (
     "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "integration" TEXT,
-    "api" TEXT
+    "apikey" TEXT
   );`
 
   statement, err := db.Prepare(createIntegrationsTableSQL)
@@ -34,4 +34,20 @@ func CreateIntegrationsTable() {
 
   statement.Exec()
   log.Println("Integrations are initialized")
+}
+
+func InsertIntegration(integration string, apiKey string) {
+  insertIntegrationSQL := `INSERT INTO integrations(integration, apikey) VALUES (?, ?)`
+  statement, err := db.Prepare(insertIntegrationSQL)
+  if err != nil {
+    log.Fatalln(err.Error())
+  }
+
+  _, err = statement.Exec(integration, apiKey)
+  if err != nil {
+    log.Fatalln(err.Error())
+  }
+
+  log.Println("Integration inserted successfully")
+
 }

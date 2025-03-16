@@ -8,6 +8,7 @@ import (
 	"fmt"
 	"os"
 
+	"github.com/chawkibsa/goqright/data"
 	"github.com/manifoldco/promptui"
 	"github.com/spf13/cobra"
 )
@@ -18,7 +19,7 @@ var integrationCmd = &cobra.Command{
 	Short: "Configure integrations APIs",
 	Long:  `This command is setup the selected integrations (products supported by goqright) along with their correspondent API keys for automation usage.`,
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("integration called")
+		addIntegration()
 	},
 }
 
@@ -110,4 +111,5 @@ func addIntegration() {
 
 	apiKey := promptGetInput(apiKeyPromptContent)
 	fmt.Sprintf(apiKey)
+	data.InsertIntegration(integration, apiKey)
 }
